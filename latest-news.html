@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Latest News | Eastern Garage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Latest news from Eastern Garage and the wider motorsport community." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            /* Lighter blue palette to match the signage */
+            --primary: #5ca6ff;
+            --primary-dark: #2560a8;
+            --accent: #ffc857;
+            --bg: #f5f8fc;
+            --text: #222;
+            --muted: #666;
+            --white: #ffffff;
+            --shadow-soft: 0 10px 25px rgba(37, 96, 168, 0.16);
+            --radius-lg: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--white);
+            border-bottom: 1px solid #dde6f4;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .top-bar {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .top-bar span {
+            color: var(--muted);
+        }
+
+        .top-bar a {
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        .main-nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.9rem 1.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: baseline;
+            gap: 0.25rem;
+        }
+
+        .logo-main {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--muted);
+            letter-spacing: 0.12em;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        nav a {
+            position: relative;
+            padding-bottom: 0.1rem;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.2rem;
+            width: 0;
+            height: 2px;
+            background: var(--primary-dark);
+            transition: width 0.2s ease-out;
+        }
+
+        nav a:hover::after,
+        nav a:focus-visible::after,
+        nav a[aria-current="page"]::after {
+            width: 100%;
+        }
+
+        .btn-primary,
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            padding: 0.7rem 1.4rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background-color 0.12s ease-out, border-color 0.12s ease-out;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            box-shadow: 0 8px 18px rgba(37, 96, 168, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 11px 22px rgba(37, 96, 168, 0.35);
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .section {
+            padding: 3.5rem 1.5rem;
+        }
+
+        .section--alt {
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .hero {
+            background: radial-gradient(circle at top left, #f3f7ff 0%, #d9e7ff 40%, #f5f8fc 100%);
+            padding: 3rem 1.5rem 3.5rem;
+            border-bottom: 1px solid #dde6f4;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 2.3rem;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 3vw, 2.4rem);
+            line-height: 1.15;
+            margin-bottom: 0.6rem;
+            color: var(--primary-dark);
+        }
+
+        .hero-tagline {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 33rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero-meta {
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .hero-meta strong {
+            color: var(--primary-dark);
+        }
+
+        .hero-photo {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-photo-caption {
+            padding: 0.7rem 1rem 0.9rem;
+            font-size: 0.84rem;
+            color: var(--muted);
+            border-top: 1px solid #e0ebff;
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.4rem;
+        }
+
+        .grid--2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 1.4rem 1.4rem 1.3rem;
+            box-shadow: 0 1px 4px rgba(37, 96, 168, 0.08);
+            border: 1px solid #d9e5ff;
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+            color: var(--primary-dark);
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .pill {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            border-radius: 999px;
+            padding: 0.25rem 0.7rem;
+            background: #e0edff;
+            color: var(--primary-dark);
+            margin-bottom: 0.35rem;
+        }
+
+        ul.feature-list {
+            margin-top: 0.7rem;
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        ul.feature-list li {
+            margin-bottom: 0.25rem;
+        }
+
+        ul.feature-list li::before {
+            content: "✔";
+            font-size: 0.8rem;
+            margin-right: 0.4rem;
+            color: var(--primary-dark);
+        }
+
+        @media (max-width: 900px) {
+            .hero-inner,
+            .grid--2 {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <div class="top-bar">
+            <span>For all your motoring needs in Finchingfield, Essex</span>
+            <span>
+                Tel: <a href="tel:01371810238">01371&nbsp;810238</a> &nbsp;|&nbsp;
+                Email: <a href="mailto:info@easterngarage.net">info@easterngarage.net</a>
+            </span>
+        </div>
+        <div class="main-nav">
+            <div class="logo">
+                <div>
+                    <div class="logo-main">Eastern Garage</div>
+                    <div class="logo-sub">Finchingfield · Essex</div>
+                </div>
+            </div>
+            <nav aria-label="Main">
+                <ul>
+                    <li><a href="index.html#top">Home</a></li>
+                    <li><a aria-current="page" href="latest-news.html">Eastern Garage Racing</a></li>
+                    <li><a href="index.html#services">Garage Services</a></li>
+                    <li><a href="index.html#sales">Car Sales</a></li>
+                    <li><a href="index.html#contact">Find Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <div class="hero-inner">
+                <div>
+                    <div class="hero-eyebrow">Latest news</div>
+                    <h1>Motorsport spotlight: Harrison Dessoy</h1>
+                    <p class="hero-tagline">
+                        Harrison Dessoy is a rising British racing driver known for quick pace, sharp racecraft
+                        and a determined approach to moving up the single-seater ladder.
+                    </p>
+                    <div class="hero-meta">
+                        <strong>Learn more:</strong> Follow updates from Harrison and his team over at
+                        <a href="https://dessoyracing.com/index.html" target="_blank" rel="noopener">Dessoy Racing</a>.
+                    </div>
+                </div>
+
+                <aside class="hero-photo" aria-label="Harrison Dessoy">
+                    <img src="https://dessoyracing.com/assets/img/gallery/gallery14.JPG"
+                         alt="Harrison Dessoy preparing for a race weekend" />
+                    <div class="hero-photo-caption">
+                        Harrison Dessoy competing on track as he chases the next step in his racing career.
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section section--alt" aria-label="Harrison Dessoy updates">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Trackside headlines</h2>
+                    <p class="section-subtitle">
+                        Quick highlights on what Harrison has been working on recently.
+                    </p>
+                </div>
+
+                <div class="grid grid--2">
+                    <article class="card">
+                        <span class="pill">Racecraft</span>
+                        <h3>Building momentum</h3>
+                        <p>
+                            Recent test days have focused on consistency across longer stints, refining braking points and
+                            corner exits to keep the lap times tight across a full race distance.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Data-driven setup changes with the engineering team</li>
+                            <li>Starts practice to sharpen reactions off the line</li>
+                            <li>Debriefs centred on tyre management and feedback</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <span class="pill">Community</span>
+                        <h3>Supporter shout-out</h3>
+                        <p>
+                            Harrison continues to work with partners and supporters who share his passion for motorsport.
+                            Keep an eye on his channels for upcoming events and meet-the-driver opportunities.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Regular updates posted via Dessoy Racing</li>
+                            <li>Local engagements to inspire the next generation of racers</li>
+                            <li>Collaborations that help keep the car on the sharp end of the grid</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-label="Connect">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Want the full story?</h2>
+                    <p class="section-subtitle">
+                        Visit Dessoy Racing for detailed race reports, photo galleries and partner news.
+                    </p>
+                </div>
+                <a class="btn-primary" href="https://dessoyracing.com/index.html" target="_blank" rel="noopener">
+                    Go to dessoyracing.com
+                </a>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
