@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Eastern Garage | Finchingfield, Essex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Eastern Garage in Finchingfield, Essex. MOTs, servicing, repairs, tyres and car sales." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            /* Lighter blue palette to match the signage */
+            --primary: #5ca6ff;
+            --primary-dark: #2560a8;
+            --accent: #ffc857;
+            --bg: #f5f8fc;
+            --text: #222;
+            --muted: #666;
+            --white: #ffffff;
+            --shadow-soft: 0 10px 25px rgba(37, 96, 168, 0.16);
+            --radius-lg: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--white);
+            border-bottom: 1px solid #dde6f4;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .top-bar {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .top-bar span {
+            color: var(--muted);
+        }
+
+        .top-bar a {
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        .main-nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.9rem 1.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: baseline;
+            gap: 0.25rem;
+        }
+
+        .logo-main {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--muted);
+            letter-spacing: 0.12em;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        nav a {
+            position: relative;
+            padding-bottom: 0.1rem;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.2rem;
+            width: 0;
+            height: 2px;
+            background: var(--primary-dark);
+            transition: width 0.2s ease-out;
+        }
+
+        nav a:hover::after,
+        nav a:focus-visible::after {
+            width: 100%;
+        }
+
+        .btn-primary,
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            padding: 0.7rem 1.4rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background-color 0.12s ease-out, border-color 0.12s ease-out;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            box-shadow: 0 8px 18px rgba(37, 96, 168, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 11px 22px rgba(37, 96, 168, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-dark);
+            border-color: #c0d1ee;
+        }
+
+        .btn-outline:hover {
+            background: #e5f0ff;
+            border-color: var(--primary);
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .section {
+            padding: 3.5rem 1.5rem;
+        }
+
+        .section--alt {
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            font-size: 0.98rem;
+        }
+
+        /* Hero */
+
+        .hero {
+            background: radial-gradient(circle at top left, #f3f7ff 0%, #d9e7ff 40%, #f5f8fc 100%);
+            padding: 3rem 1.5rem 3.5rem;
+            border-bottom: 1px solid #dde6f4;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 2.3rem;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 3vw, 2.4rem);
+            line-height: 1.15;
+            margin-bottom: 0.6rem;
+            color: var(--primary-dark);
+        }
+
+        .hero-highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .hero-tagline {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 33rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.3rem;
+        }
+
+        .hero-meta {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .hero-meta strong {
+            color: var(--primary-dark);
+        }
+
+        .hero-photo {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-photo-caption {
+            padding: 0.7rem 1rem 0.9rem;
+            font-size: 0.84rem;
+            color: var(--muted);
+            border-top: 1px solid #e0ebff;
+        }
+
+        .hero-photo-caption strong {
+            color: var(--primary-dark);
+        }
+
+        .hero-card {
+            max-width: 1100px;
+            margin: 1.8rem auto 0;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 6px 18px rgba(37, 96, 168, 0.12);
+            padding: 1.6rem 1.5rem;
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .hero-card h2 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.1rem;
+        }
+
+        .hero-card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .hero-list {
+            list-style: none;
+            display: grid;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .hero-list li::before {
+            content: "•";
+            color: var(--accent);
+            margin-right: 0.35rem;
+        }
+
+        .hero-note {
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        /* Cards / grids */
+
+        .grid {
+            display: grid;
+            gap: 1.4rem;
+        }
+
+        .grid--3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .grid--2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 1.4rem 1.4rem 1.3rem;
+            box-shadow: 0 1px 4px rgba(37, 96, 168, 0.08);
+            border: 1px solid #d9e5ff;
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+            color: var(--primary-dark);
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .pill {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            border-radius: 999px;
+            padding: 0.25rem 0.7rem;
+            background: #e0edff;
+            color: var(--primary-dark);
+            margin-bottom: 0.35rem;
+        }
+
+        ul.feature-list {
+            margin-top: 0.7rem;
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        ul.feature-list li {
+            margin-bottom: 0.25rem;
+        }
+
+        ul.feature-list li::before {
+            content: "✔";
+            font-size: 0.8rem;
+            margin-right: 0.4rem;
+            color: var(--primary-dark);
+        }
+
+        /* Sales */
+
+        .sales-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .sales-panel {
+            background: var(--primary-dark);
+            color: #fff;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.4rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .sales-panel h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+        }
+
+        .sales-panel p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .sales-panel .btn-primary {
+            margin-top: 0.9rem;
+            background: #fff;
+            color: var(--primary-dark);
+            box-shadow: none;
+        }
+
+        .sales-panel .btn-primary:hover {
+            background: #f5f7fa;
+        }
+
+        .sales-note {
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            opacity: 0.86;
+        }
+
+        /* Contact */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+            gap: 1.6rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.4rem;
+            box-shadow: 0 1px 4px rgba(37, 96, 168, 0.08);
+            border: 1px solid #d9e5ff;
+            font-size: 0.9rem;
+        }
+
+        .contact-row {
+            margin-bottom: 0.7rem;
+        }
+
+        .contact-label {
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-value {
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: var(--primary-dark);
+        }
+
+        .opening-hours {
+            margin-top: 0.6rem;
+            border-top: 1px dashed #d3def9;
+            padding-top: 0.7rem;
+        }
+
+        .opening-hours table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .opening-hours th,
+        .opening-hours td {
+            padding: 0.15rem 0;
+            text-align: left;
+        }
+
+        .opening-hours th {
+            font-weight: 500;
+        }
+
+        .map-embed {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(37, 96, 168, 0.12);
+            border: 1px solid #d3def9;
+            background: #cfd9e6;
+            min-height: 260px;
+        }
+
+        .map-embed iframe {
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        footer {
+            background: #0b1726;
+            color: #c4cfdf;
+            padding: 1.4rem 1.5rem 1.6rem;
+            font-size: 0.82rem;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .footer-inner a {
+            color: #f5f7fa;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+            .main-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+            }
+
+            .hero-inner,
+            .sales-inner,
+            .contact-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .hero {
+                padding-top: 2.4rem;
+            }
+
+            .section {
+                padding: 3rem 1.3rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .grid--3,
+            .grid--2 {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <div class="top-bar">
+            <span>For all your motoring needs in Finchingfield, Essex</span>
+            <span>
+                Tel: <a href="tel:01371810238">01371&nbsp;810238</a> &nbsp;|&nbsp;
+                Email: <a href="mailto:info@easterngarage.net">info@easterngarage.net</a>
+            </span>
+        </div>
+        <div class="main-nav">
+            <div class="logo">
+                <div>
+                    <div class="logo-main">Eastern Garage</div>
+                    <div class="logo-sub">Finchingfield · Essex</div>
+                </div>
+            </div>
+            <nav aria-label="Main">
+                <ul>
+                    <li><a href="#top">Home</a></li>
+                    <li><a href="#services">Garage Services</a></li>
+                    <li><a href="#sales">Car Sales</a></li>
+                    <li><a href="#contact">Find Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-inner">
+                <div>
+                    <div class="hero-eyebrow">Established village garage</div>
+                    <h1>
+                        Honest, reliable <span class="hero-highlight">MOT &amp; servicing</span>
+                        in Finchingfield, Essex.
+                    </h1>
+                    <p class="hero-tagline">
+                        Eastern Garage provides MOT testing, servicing, repairs, tyres and bodywork from our workshop
+                        on Wethersfield Road, supporting drivers from Finchingfield and the surrounding area.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="tel:01371810238">Call to book: 01371&nbsp;810238</a>
+                        <a class="btn-outline" href="#contact">View map &amp; opening hours</a>
+                    </div>
+                    <div class="hero-meta">
+                        <strong>Address:</strong> Wethersfield Road, Finchingfield, Braintree, Essex CM7&nbsp;4NT
+                    </div>
+                </div>
+
+                <!-- New hero image using your photo -->
+                <aside class="hero-photo" aria-label="Eastern Garage">
+                    <img src="eastern-garage-hero.jpg"
+                         alt="Eastern Garage in Finchingfield with a classic Mini outside the workshop" />
+                    <div class="hero-photo-caption">
+                        <strong>Eastern Garage, Finchingfield</strong> &mdash; local, friendly service for MOTs, servicing and car sales.
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Key services highlight bar -->
+            <div class="hero-card" aria-label="Key services">
+                <div>
+                    <h2>Local, full-service car garage</h2>
+                    <p>
+                        Whether you need an annual MOT, routine servicing or repairs, our team can help keep your car on the road.
+                    </p>
+                </div>
+                <ul class="hero-list">
+                    <li>MOT testing (Class 4)</li>
+                    <li>Servicing and diagnostics</li>
+                    <li>Brakes, exhausts and tyres</li>
+                    <li>Body repairs and insurance work</li>
+                </ul>
+                <div class="hero-note">
+                    Car sales available via our eBay showroom &mdash; see “Car Sales” below.
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="section section--alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Garage services</h2>
+                    <p class="section-subtitle">
+                        A complete range of workshop services from MOTs and servicing to repairs and tyres.
+                    </p>
+                </div>
+
+                <div class="grid grid--3">
+                    <article class="card">
+                        <span class="pill">MOTs</span>
+                        <h3>MOT testing</h3>
+                        <p>
+                            MOT tests carried out at our Finchingfield workshop, with clear advice if any work is required.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Class 4 MOTs</li>
+                            <li>Pre-MOT checks</li>
+                            <li>Repair work if needed</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <span class="pill">Servicing</span>
+                        <h3>Servicing &amp; repairs</h3>
+                        <p>
+                            Routine servicing and mechanical repairs to help keep your vehicle reliable and safe to drive.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Interim and full services</li>
+                            <li>Diagnostics and fault finding</li>
+                            <li>Clutches, batteries and more</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <span class="pill">Tyres &amp; brakes</span>
+                        <h3>Tyres, brakes &amp; exhausts</h3>
+                        <p>
+                            Replacement tyres, brake components and exhaust systems, fitted and balanced by our team.
+                        </p>
+                        <ul class="feature-list">
+                            <li>New tyres supplied and fitted</li>
+                            <li>Wheel balancing</li>
+                            <li>Brake discs, pads &amp; exhausts</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="grid grid--2" style="margin-top: 1.6rem;">
+                    <article class="card">
+                        <span class="pill">Bodywork</span>
+                        <h3>Body repairs</h3>
+                        <p>
+                            From minor cosmetic damage to larger accident repairs, we can also assist with insurance work.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Panel and paintwork</li>
+                            <li>Scratch and dent repairs</li>
+                            <li>Accident damage estimates</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <span class="pill">Local service</span>
+                        <h3>Friendly village garage</h3>
+                        <p>
+                            Serving Finchingfield, Braintree and the surrounding villages with straightforward, honest advice.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Locally based team</li>
+                            <li>Clear pricing</li>
+                            <li>No unnecessary work recommended</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Car Sales -->
+        <section id="sales" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Used car sales</h2>
+                    <p class="section-subtitle">
+                        Browse our current stock of cars and commercial vehicles on eBay.
+                    </p>
+                </div>
+
+                <div class="sales-inner">
+                    <div>
+                        <p>
+                            In addition to our workshop services, Eastern Garage offers a changing selection of used cars and
+                            vehicles for sale. All vehicles are described accurately, with viewings by appointment at our Finchingfield site.
+                        </p>
+                        <ul class="feature-list" style="margin-top: 0.9rem;">
+                            <li>Cars and light commercial vehicles</li>
+                            <li>Part-exchange considered on many vehicles</li>
+                            <li>Located at our Wethersfield Road premises</li>
+                        </ul>
+                    </div>
+
+                    <aside class="sales-panel" aria-label="eBay car sales">
+                        <h3>View stock on eBay</h3>
+                        <p>
+                            Our live vehicle listings are managed through our official eBay profile.
+                        </p>
+                        <a
+                            class="btn-primary"
+                            href="https://www.ebay.co.uk/usr/eastern-garage-cars"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            View vehicles on eBay
+                        </a>
+                        <p class="sales-note">
+                            eBay profile: <strong>eastern-garage-cars</strong><br />
+                            For vehicle enquiries you can also contact us using the phone number on this website.
+                        </p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact / Map -->
+        <section id="contact" class="section section--alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Find us &amp; contact details</h2>
+                    <p class="section-subtitle">
+                        Located on Wethersfield Road in Finchingfield, with parking on site.
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-row">
+                            <div class="contact-label">Address</div>
+                            <div class="contact-value">
+                                Eastern Garage (Essex) Ltd<br />
+                                Wethersfield Road<br />
+                                Finchingfield, Braintree<br />
+                                Essex CM7&nbsp;4NT
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <div class="contact-label">Telephone</div>
+                            <div class="contact-value">
+                                <a href="tel:01371810238">01371&nbsp;810238</a>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">
+                                <a href="mailto:info@easterngarage.net">info@easterngarage.net</a>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <div class="contact-label">Car sales email</div>
+                            <div class="contact-value">
+                                <a href="mailto:easterngaragecars@gmail.com">easterngaragecars@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="opening-hours">
+                            <div class="contact-label">Opening hours</div>
+                            <table aria-label="Opening hours">
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Monday&ndash;Friday</th>
+                                    <td>8:30am &ndash; 5:30pm</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Saturday</th>
+                                    <td>By appointment</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sunday</th>
+                                    <td>Closed</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p style="margin-top: 0.4rem; font-size: 0.82rem; color: var(--muted);">
+                                Please call ahead to confirm availability for MOTs, servicing and vehicle viewings.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="map-embed" aria-label="Map showing the location of Eastern Garage">
+                        <iframe
+                            src="https://www.google.com/maps?q=Eastern+Garage+Wethersfield+Road+Finchingfield+CM7+4NT&output=embed"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div>
+                &copy; 2025 Eastern Garage (Essex) Ltd. All rights reserved.
+            </div>
+            <div class="footer-links">
+                <span>Tel: <a href="tel:01371810238">01371&nbsp;810238</a></span>
+                <span>|</span>
+                <span>Email: <a href="mailto:info@easterngarage.net">info@easterngarage.net</a></span>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
